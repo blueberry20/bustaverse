@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Create_Editor";
+}
+
+<link href="../../Content/css/Verse/Create_Editor_Page1.css" rel="Stylesheet" />
+
+<!--**************************Editor page***************************-->
+<div class="fullScreenContainer" id="editorPage">
+    
+    <!--*************************step 1. textarea***************-->
+    <div id="step1" class="verseSteps">
+
+    </div>
+
+</div><!--pagecontainer-->
+
+<script>
+    function document_ready() {
+        /* ----------------------use backstretch to center image------------- */
+        $('#step1').backstretch("../../Content/images/road.jpg");
+        $('footer').css('position', 'absolute').css('bottom', '0').css('left', '0');
+
+        showEditor(
+
+    $('#firstTwoLines').html()
+
+    , function (enteredText) { //on success
+
+        var myVerse = $('#myVerseEnding').show();
+        myVerse.find('.twoLines').html(enteredText);
+
+
+        /*
+        $.ajax("url", {}
+            ).done(function () {
+                alert('Thank you for entering this text: ' + enteredText);
+            }).error(function () {
+                alert('Oops, I could not save your verse! Please try again later');
+            });
+            */
+
+    }
+
+    , function () { //on cancel
+        // alert('You changed your mind??');
+    }
+
+);
+            
+    }
+</script>

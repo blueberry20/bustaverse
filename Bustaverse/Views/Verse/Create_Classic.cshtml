@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<link href="../../Content/css/Verse/Create_Classic.css" rel="Stylesheet" />
+
+<!--**************************Start a verse***************************-->
+
+<div class="pageContainer" id="createVersePage">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                
+                <div id="createVerse">
+                    <h2 class="text-center">Bust a verse!</h2>
+                    <h3>Enter first two lines of the verse</h3>
+                    <input type="text" class="form-control" placeholder="" required autofocus>
+                    <input type="text" class="form-control" placeholder="" required>
+                    <input type="text" class="form-control" placeholder="" required disabled>
+                    <input type="text" class="form-control" placeholder="" required disabled>
+                    <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                           Make it public (users can see your first two lines)
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                           Make it hidden (users see the last word in the 2nd line)
+                          </label>
+                        </div>
+                    <button class="btn btn-lg btn-blue" type="submit">Challenge everybody!</button>
+                    <button class="btn btn-lg btn-blue" type="submit">Challenge a friend!</button>
+                </div>
+             </div>
+            <div class="col-lg-3">
+                 <!--Tags-->
+                 <div class="sidebarWidget" id="tagsWidget">
+                    <h3>Most Popular Tags</h3>
+                    <div class="tagCloud">
+                        <a>Funny</a>
+                        <a>Romantic</a>
+                        <a>Silly</a>
+                        <a>Life</a>
+                        <a>Work</a>
+                        <a>Relationship</a>
+                    </div>    
+                </div>
+
+                <!--most popular versers-->
+                <div class="sidebarWidget" id="versersWidget">
+                    <h3>Most Popular Versers</h3>
+                    <a href="#" class="friendSnippet row">
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 imageHolder">
+                            <img class="img-responsive" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt"" />
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9 articleInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 imageHolder">
+                            <img class="img-responsive" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt"" />
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9 articleInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+                    <a href="#" class="friendSnippet row">
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 imageHolder">
+                            <img class="img-responsive" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt"" />
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9 articleInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function document_ready() {
+        /* ----------------------use backstretch to center image------------- */
+        $('#createVersePage').backstretch("../../Content/images/guywithtypewriter_sm.jpg");
+
+    }
+</script>

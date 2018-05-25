@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<link href="../../Content/css/Home/Index.css" rel="Stylesheet" />
+
+<!--================================= FRONT PAGE =================================== -->
+   
+
+       <!--div for full screen image-->
+        <div id="frontpageImage" class="fullScreenContainer"></div>
+        <div id="frontpageimageContent">
+            <h1>bust'a'verse</h1>
+            <h2>Launching soon!</h2>
+        </div>
+
+
+<script>
+    function document_ready() {
+        
+        /* ----------------------use backstretch to center image------------- */
+        $('#frontpageImage').backstretch("../../Content/images/girltyping4_sm_square.jpg");
+        $('footer').css('position', 'absolute').css('bottom', '0').css('left', '0');
+    }
+</script>

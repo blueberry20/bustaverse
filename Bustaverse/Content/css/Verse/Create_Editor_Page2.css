@@ -1,0 +1,162 @@
+﻿/****************step 2*********************/
+
+#step2 {
+text-align:center;   
+position:relative;
+}
+
+.categoriesCloud {
+ padding-top:100px;   
+}
+
+.categoriesCloud a {
+    color:#000;
+    border:1px solid #39b3d7;
+    border-radius: 4px;
+    padding:5px;
+    margin:5px;
+    display:inline-block;
+    font-size:26px;
+}
+
+.no-touch .categoriesCloud a:hover {
+    cursor:pointer;
+    text-decoration:none;  
+    background-color: #fff;
+    color:#000;
+}
+
+.no-touch .categoriesCloud a:active {
+    background-color: #00cccb;
+}
+
+.selectedCategory {
+    background-color: #00cccb;
+}
+
+
+/****************step 3********************/
+
+#step3 .row {
+ margin-top:100px;   
+}
+
+
+.addedHashtag {
+ background-color: #fff;
+ font-size:36px;
+ color:#000;
+ display:inline-block;   
+ border-radius: 4px;
+ border:1px solid #ff2300;
+ padding:5px;
+ margin:5px;
+ position: relative;
+}
+
+.glyphicon-remove {
+color: #000;
+position:absolute;
+top:-5px;
+right:-5px;  
+font-size:10px;
+}
+
+
+
+/****************step 4********************/
+#step4 {
+    position:relative;
+}
+
+#step4 .row {
+ padding-top:100px;   
+}
+
+#step4 .radio {
+ color: #000;
+ font-size: 36px;   
+ border:1px solid #000;
+ border-radius:10px;
+ margin-bottom:20px;
+ background-color: #fff;
+}
+
+.no-touch #step4 .radio:hover {
+   color:#00cccb;
+}
+
+#step4 .radio input[type="radio"] {
+ margin:20px;   
+ color:#000;
+}
+
+
+.selectedMode {
+   background-color: #fff;
+   color:#000 !important;
+}
+
+.explanation {
+ font-size:11px;
+ color: #666;   
+ text-transform:uppercase;
+ font-weight:600;
+}
+
+
+/*error message*/
+#createEditorNext1 p {
+ font-size:26px;   
+ margin-top:26px;
+ background-color: #47a447;
+ font-weight: 600;
+ display:inline-block;
+ min-height:0;
+ display:none;
+ min-width:300px;
+}
+
+
+
+/*****************step 5***********************/
+
+#selectFriendsPage {
+ background-color:#E5DED6;  
+ position:relative;   
+ padding-top:50px; 
+ background: url(../../Content/images/p5.png) repeat;
+}
+
+#selectFriendsPage hr {
+ border-top:2px solid #c0c0c0;   
+}
+
+#selectFriendsPage h3 {
+text-align:center;
+font-size:22px;
+}
+
+#step5 .radio { 
+ border-radius:8px;
+ font-size:30px;  
+ margin-bottom:20px; 
+ background-color: #669999; 
+}
+
+#step5 .radio input[type="radio"] {
+ margin:15px;   
+}
+
+.no-touch #step5 .radio:hover {
+    color:#fff;
+}
+
+#radioHolder {
+   margin-top:20px;
+   margin-bottom:20px;
+}
+
+#arrowFriends {
+ font-size:26px;   
+}

@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Create_Editor";
+}
+<!--**************************Editor page***************************-->
+<div class="pageContainer" id="editorPage">
+    
+
+
+            <!--*************************step 1. textarea***************-->
+             <div id="step1" class="verseSteps">
+
+                <div class="container">
+                    <div id="editorPreview"></div>
+
+                    <h2> <span class="circle">Step 1.</span> Start typing your verse here</h2>
+                    <div id="editor">
+                        <textarea id="enteredtext" cols="1"></textarea>
+                    </div> 
+                </div>
+            </div>
+            <!--**********************Step 2. Select Category**************-->
+           
+            <div class="verseSteps" id="step2">
+                <div class="container">
+                    <h2>2. Select a category</h2>
+                    <div class="categoriesCloud">
+                        <a class="selectedCategory">Uncategorized</a>
+                        <a>Funny</a>
+                        <a>Romantic</a>
+                        <a>Silly</a>
+                        <a>Life</a>
+                        <a>Work</a>
+                        <a>Relationship</a>
+                        <a>Funny</a>
+                        <a>Romantic</a>
+                        <a>Silly</a>
+                        <a>Life</a>
+                        <a>Work</a>
+                        <a>Relationship</a>
+                    </div>    
+                </div>
+            </div>
+
+            <!--**********************Step 3. Add Hashtags**************-->
+            <div class="verseSteps" id="step3">
+                <div id="step3bg">
+                <div class="container">
+                    <h2>3. Add a Hashtag</h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                            <input type="text" class="form-control input-lg" id="hashtagInput" placeholder="Your associations with the verse">
+                        </div>
+
+                        <div class="col-md-2 col-sm-3 col-xs-12">
+                            <button type="submit" class="btn btn-success btn-lg" id="addHashtagBtn">Add</button>
+                        </div>
+                    </div>
+
+                    <div class="row" id="addedTagsDiv">
+                        
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--**********************Step 4. Select a mode**************-->
+            <div class="verseSteps" id="step4">
+                <div class="container">
+                    <h2>4. Select a mode</h2>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                            <div class="radio" id="visibleMode">
+                                <label>
+                                    <input type="radio" name="mode" value="visible">
+                                    Visible                                   
+                                </label>
+                                <p class="explanation">Users can see your text</p>
+                            </div>
+                            <div class="radio" id="surpriseMode">
+                                <label>
+                                    <input  type="radio" name="mode" value="surprise">
+                                    Surprise
+                                </label>
+                                    <p class="explanation">Users can only see last word in each line</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!--container-->
+                
+            </div>
+
+            <div id ="createEditorNext1" class=" nextStep">
+                
+                    <a href='/Verse/Create_Editor_Step2' class="btn btn-lg btn-red nextBtn" id="submitVerseBtn" type="submit">Next</a>
+                    <div class="row">
+                        <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">Please enter verse text!</p>
+                    </div>
+            </div>
+       
+</div><!--pagecontainer-->
+
+<script>
+    function document_ready() {
+        /* ----------------------use backstretch to center image------------- */
+        $('#step1').backstretch("../../Content/images/road.jpg");
+       // $('#step3').backstretch("../../Content/images/road3.jpg");
+
+
+        
+        
+        //step 1.
+        //add this script to add new line on enter
+        $.valHooks.textarea = {
+            get: function (elem) {
+                return elem.value.replace(/\r?\n/g, "<br>");
+            }
+        };
+
+        //on key up event copy value from the editor area and add to preview area
+        //save value in a cookie
+        $('#editor').keyup(function (e) {
+            var currentValue = $('#editor textarea').val();
+            $('#editorPreview').html(currentValue);
+
+            setCookie('verseText', currentValue, 365);          
+        });
+            
+        
+
+
+        //step 2. add selected class to categorie on click
+        $(".categoriesCloud a").click(function () {
+
+            //clear other selected classes, so the use can only pick one
+            $(".categoriesCloud a").removeClass("selectedCategory");
+
+            //add class selected to the element that was clicked
+            $(this).toggleClass("selectedCategory");
+
+            var categoryValue = $(this).text();
+
+            //save categorie value to cookie
+            if ($(this).hasClass("selectedCategory")) {
+                setCookie('selectedCategory', categoryValue, 365);
+            }
+        });
+
+        //if no category was clicked, set cookie value to uncategorized        
+            var categoryValue = "Uncategorized";
+            setCookie('selectedCategory', categoryValue, 365);
+        
+
+
+
+        //step 3. add hashtag to show what value was entered
+        var hashtagCount = 0;
+        var hashTags = [];
+
+        $('#addHashtagBtn').click(function () {
+            var hashtagValue = $('#hashtagInput').val().toLowerCase();
+            //check that value wasn't entered already and that it's not empty
+            if (hashTags.indexOf(hashtagValue) == -1 && hashtagValue !== '') {
+                //add to array
+                hashTags.push(hashtagValue);
+                hashtagCount++;
+                setCookie('hashtagCount', hashtagCount, 365);
+                //set cookie
+                setCookie('enteredHashtag' + (hashtagCount - 1), hashtagValue, 365);
+                //display newly added hashtag on screen, add remove glyphicon
+                var hashtag = $('<div>' + hashtagValue + '</div>').addClass('addedHashtag').append('<span class="glyphicon glyphicon-remove"></span>');
+                hashtag.appendTo($('#addedTagsDiv'));
+            } else {
+                $('#hashtagInput').val('').focus();
+            }
+
+            //on click of newly created hashtag, remove it
+            hashtag.click(function () {
+                $(this).remove();
+                //find index of removed array, and delete 1 item
+                hashTags.splice(hashTags.indexOf($(this).text()), 1);
+                hashtagCount--;
+                //update cookies
+                setCookie('hashtagCount', hashtagCount, 365);
+                for (var i = 0; i < hashTags.length; i++) {
+                    setCookie('enteredHashtag' + i, hashTags[i], 365);
+                }
+            });
+
+
+            //set focus back to input
+            $('#hashtagInput').val('').focus();
+        }); //end of button click
+
+        //on enter key, call click button event
+        $("#hashtagInput").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#addHashtagBtn").click();
+            }
+        });
+
+
+        //step 4. select visible or hidden mode
+
+        $('#step4 .radio').click(function () {
+            //set input attribute to checked, since it doesn't happen automatically
+            $(this).find('input:radio').attr('checked', true);
+            //get value from the checked input and set it to cookie
+            var selectedMode = $('input[name=mode]:checked').val();
+            setCookie('selectedMode', selectedMode, 365); 
+        })
+
+        //on load select visible radio by default, which would work if no radio button was clicked
+        $('#visibleMode').click();
+        
+
+
+         //on click of NEXT btn, check if verse text is not empty
+         $('#submitVerseBtn').click(function (e) {
+             if ($('#editor textarea').val() == '') {
+                 e.preventDefault();
+                 $('#createEditorNext1 p').show();
+             }
+             
+         })
+
+
+
+
+
+
+    }
+</script>

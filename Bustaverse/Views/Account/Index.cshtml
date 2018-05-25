@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<link href="../../Content/css/Account/Index.css" rel="Stylesheet" />
+
+<!--**************************My Page***************************-->
+
+<div class="pageContainer" id="myPage">
+    <div class="container">
+        <div class="row" id="profileTop">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <img id="profilePic" class="img-circle img-responsive" src='@Url.Content("~/Content/images/girlinhat.jpg")' alt="" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h2 id="displayName">Blueberry</h2>
+                <div id="displayFollowers"><p><span class="number">27</span></br>Followers</p></div>
+                <div id="displayRating"><p><span class="number">87%</span></br>Rating</p></div>
+               
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="buttonHolder">
+                <button class="btn btn-lg btn-blue btn-block btn-verse" type="submit">Bust a verse!</button>
+                <button class="btn btn-lg btn-blue btn-block btn-verse" type="submit">Boost a verse!</button>  
+            
+            </div>
+        </div>
+
+        <!--2 row. Verses-->
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+               <!--**************************Verses I finished***************************-->
+                <div class="row" id="finishedVerses">
+                    <h3 class="text-center">Verses I finished</h3>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                           <!-- <div class="verseStats">
+                                <p class="startedBy">Started by BlueSquarrel</p><p class="statRating">65% Rating</p>
+                            </div>-->
+                        </div>
+                        
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>George and Jim</p>
+                            <p>Go to the gym</p>
+                            <p>Anna and Vasya</p>
+                            <p>Going to salsa</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--**************************Verses I started***************************-->
+                  <div class="row" id="startedVerses">
+                    <h3 class="text-center">Verses I started</h3>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <div class="verseSnippet">
+                            <p>I'm tired of the winter</p>
+                            <p>And want to eat a peach</p>
+                            <p>I'm dreaming of pirogies</p>
+                            <p>And going to the beach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <!--*************************Friend List***********************-->
+            <div class="col-lg-3 col-md-3 friendList">
+                <h3>My Friends</h3>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">                          
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function document_ready() {
+
+        
+    }//document_ready
+</script>

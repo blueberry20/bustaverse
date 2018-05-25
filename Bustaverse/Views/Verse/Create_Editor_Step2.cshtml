@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Create_Editor_Step2";
+}
+
+<div class="pageContainer" id="selectFriendsPage">
+    
+    <!--*************************step 5. Select friends***************-->
+        <div class="verseSteps" id="step5">
+            <div class="container">
+                <h2>5. Who do you want to challenge?</h2>
+                <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="radioHolder">
+                            <div class="radio audienceRadio" id="playingEverybody">
+                                <label>
+                                     <input type="radio" name="challenge" value="everybody">
+                                     Everybody!                        
+                                </label>
+                            </div>
+                            <div class="radio audienceRadio">
+                                <label>
+                                    <input type="radio" name="challenge" value="friends">
+                                    I want to challenge my friend!
+                               </label>
+                            </div> 
+                            <div class="text-center">
+                                <span class="glyphicon glyphicon-chevron-down" id="arrowFriends"></span>
+                            </div>
+                            <div>
+                                <h3>Invite by email</h3>
+                                <div class="input-group" id="zipcodeInputGroup" >
+                                    <input type="text" class="form-control" placeholder="Enter your friend's email">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-success" type="button">Invite</button>
+                                        </span>
+                                </div><!-- /input-group -->
+                                <h3>Or select from the list below</h3>
+                            </div>
+
+                        </div>
+                </div>
+                <hr />
+                <div id="selectFriendsDiv" class="row">
+                    
+                   <a href="#" class="friendSnippet col-lg-3">
+                        <div class="ImageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt"" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+                
+                </div><!--selectfriendsdiv-->
+                      
+            </div>
+        </div><!--step5-->
+
+
+        <div class="nextStep">
+            <div class="row ">
+                <div class=col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a href='/Verse/Create_Editor_Step3' class="btn btn-lg btn-red nextBtn" type="submit">Next</a>
+                    <a href='/Verse/Create_Editor_Step1' class="btn btn-lg btn-default nextBtn" id="backBtn" type="submit">Go back</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script>
+    function document_ready() {
+        //load facebook friends
+        $(document).bind('fbAsyncInit', function () {
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+
+                    //perform task
+FB.api('me/friends?fields=name,picture', function(response) {
+        for (var i = 0; i < response.data.length; i++) {
+            $('#selectFriendsDiv').append('<a href="#" class="friendSnippet col-lg-3"><div class="ImageHolder pull-left"><img class="img-responsive img-circle" src="' + response.data[i].picture.data.url + '" alt="" /></div><div class="friendInfo"><h4>' + response.data[i].name + '</h4><p class="blogDate">85 followers</p></div></a>');
+        }
+    });
+
+                } else if (response.status === 'not_authorized') {
+                    FB.login();
+                } else {
+                    FB.login();
+                }
+            });
+        });
+
+
+        //set cookie for radio button - challenging everybody or a friend
+        $('.audienceRadio').click(function () {
+            //set input attribute to checked, since it doesn't happen automatically
+            $(this).find('input:radio').attr('checked', true);
+            //get value from the checked input and set it to cookie
+            var challengingWho = $('input[name=challenge]:checked').val();
+            setCookie('challengeAudience', challengingWho, 365);
+        })
+
+        //on load select visible radio by default, which would work if no radio button was clicked
+        $('#playingEverybody').click();
+        
+    }
+    
+
+</script>

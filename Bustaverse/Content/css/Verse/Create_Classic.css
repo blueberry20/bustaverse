@@ -1,0 +1,27 @@
+﻿
+/******************Create a verse. old version*********************/
+
+
+#createVerse {
+    width:70%;   
+    text-align:center;
+    background-color:rgba(255,255,255,0.7);
+    padding:20px;
+}
+
+#createVerse h2 {
+ background-color: #0a1821;  
+ color: #fff;
+}
+
+#createVerse input[type="text"]{
+ margin: 20px 0;   
+}
+
+#createVerse label {
+ font-size:20px;   
+}
+
+#createVerse .radio {
+ text-align:left;   
+}

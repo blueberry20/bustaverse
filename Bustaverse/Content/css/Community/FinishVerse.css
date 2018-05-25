@@ -1,0 +1,243 @@
+﻿
+
+/*******************************FINISH A VERSE PAGE***********************/
+
+#finishVersePage {
+ background: url(../../Content/images/p5.png) repeat;   
+ padding-bottom:100px;
+ padding: 50px 20px;
+}
+
+
+/**********middle section*************/
+#finishVerseCenter {
+ background-color:#fff;
+}
+
+/*override word class from previous page*/
+#finishVersePage .word {
+    background-color: #c0c0c0;
+    color:#000;
+}
+
+/*verse*/
+#finishVersePage .twoLines {
+ margin-left:0;   
+ font-size:26px;
+}
+
+#finishVersePage .verseRow {
+ margin:0;
+ display:block;   
+}
+
+/*social icons*/
+#finishVersePage .shareDiv {
+ display:inline-block;   
+}
+
+#bestVerse .word {
+    background-color: #000;
+    color:#fff;
+}
+
+#bestVerse {
+   /*background-color:#f4f4f4;*/
+   padding:10px;
+   border:5px solid #c0c0c0;
+}
+
+.beginningVerseCategory {
+    font-weight:600;
+}
+
+.bestVerseRightSpace {
+    height:84px;
+}
+
+#bestVerse .imageHolder {
+    max-height:84px; 
+    margin-bottom:10px;
+}
+
+.topRatedStamp {
+    height:100px;
+    margin: 0 auto;
+}
+
+#bestTwoLines .word {
+    background-color:#c0c0c0;
+    color:#000;
+}
+
+#bestVerseText {
+    background: url(../../../Content/images/car.jpg);
+    background-size:cover;
+}
+
+/*
+#bestVerseBottomRow {
+    background-color: #F0F3F8;
+}*/
+
+/*button "write your ending"*/
+#submitResponseBtn {
+padding:12px;
+margin: 5px 10px 5px 5px;
+background-color:#1ba9dd;
+color: #fff;
+text-transform: uppercase;
+width:206px;
+font-size:18px;
+}
+
+#submitResponseBtn:hover {
+ background-color: #31b1e0;
+}
+
+.postedBy {
+    font-weight:600;
+}
+
+
+/***other responses***/
+#otherResponseh3 {
+ background-color: #00cccb;
+ padding: 5px;   
+}
+
+hr {
+    border-top:5px solid #eee;
+}
+
+
+ .verseEnding {
+ padding:10px;   
+}
+
+#finishVersePage .shareDiv {
+ margin-top:0;
+ text-align:right;   
+ height:59px;
+}
+
+#finishVersePage ul.social-icons li i {
+ line-height:30px;   
+}
+
+#finishVersePage ul.social-icons {
+    line-height:59px;
+}
+
+ul.social-icons li a {
+  width:30px;
+  height:30px;  
+}
+
+.votesNumber {
+    font-size:16px;
+    margin-right:10px;
+}
+
+
+.roundIcon {
+    height:40px;
+    width:40px;
+    border-radius:50%;
+    background-color:#fff;
+    text-align:center;
+    line-height:40px;
+    border:1px solid #00cccb;
+    font-size:20px;
+    display:inline-block;
+    margin-bottom:10px;
+}
+
+.roundIcon:hover {
+    background-color: #00e6e4;
+    cursor:pointer;
+}
+
+/**gray color for line that has social icons**/
+.lastLine {
+ background-color: #f0f0f0;   
+}
+
+#myVerseEnding {
+    display:none;
+}
+
+/**********************LEFT SIDEBAR******************************/
+.sidebarVerse {
+border: 1px solid #f0f0f0;
+padding: 5px;
+text-align: center;
+}
+
+.sidebarWidget li {
+    height:30px;
+    padding-left:30px;
+    padding-top:10px;
+}
+
+.sidebarWidget li:hover {
+    background-color: #f0f0f0;
+}
+
+.tagCloud {
+    padding:10px;
+}
+
+
+/*********************RIGHT SIDEBAR****************************/
+
+#finishVersePage .friendSnippet {
+    background-color:#fff;
+}
+
+#versersWidget {
+    background-color:transparent;
+}
+
+/**********************MEDIA QUERIES****************************/
+
+@media only screen 
+and (max-width: 1450px) {
+    .word {
+        font-size:20px;
+    }
+}
+
+@media only screen
+and (max-width: 1200px) {
+    #finishVerseRightBar {
+        display:none;
+    }
+
+    .startVerseBtn {
+        font-size: 15px;
+    }
+}
+
+@media only screen
+and (max-width: 992px) {
+    #similarVersesWidget, #mostTrendingVersesWidget {
+        display:none;
+    }
+
+    .startVerseBtn {
+       display:none;
+    }
+}
+
+
+@media only screen
+and (max-width: 768px) {
+    #finishVersePage {
+        padding:60px 0 50px;
+    }
+
+    #finishVerseCenter {
+        padding:0;
+    }
+}

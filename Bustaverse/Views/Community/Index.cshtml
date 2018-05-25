@@ -1,0 +1,287 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<link href="../../Content/css/Community/Index.css" rel="Stylesheet" />
+
+<!--**************************Community page***************************-->
+
+<div class="pageContainer" id="communityPage">
+    <div class="container">
+        <h2>Choose a verse to complete! Be creative and compete!</h2>
+        <div class="col-lg-9 col-md-9" id="communityVerses">           
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#allVerses" data-toggle="tab">All</a></li>
+                  <li><a href="#publicMode" data-toggle="tab">Public Mode</a></li>
+                  <li><a href="#surpriseMode" data-toggle="tab">Surprise Mode</a></li>
+                  <li class="dropdown">
+                    <a href="#" id="sortDropdown" class="dropdown-toggle" data-toggle="dropdown">Sort by <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="sortDropdown">
+                      <li><a href="#popularityDropdown" tabindex="-1" data-toggle="tab">Popularity</a></li>
+                      <li><a href="#recentDropdown" tabindex="-1" data-toggle="tab">Most Recent</a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="allVerses">
+
+                        <!--*************************Listing*********************-->
+                        <div class="verseStart">
+                            <div class="row">
+                                <div class="imageHolder col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt="" />
+                                </div>
+                                <div class="twoLines col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <span class="word">George</span> <span class="word">prefers</span> <span class="word">to</span> <span class="word">swim</span>
+                                    <br />
+                                    <span class="word">And</span> <span class="word">sometimes</span> <span class="word">to</span> <span class="word">dream</span>
+                                    <br />
+                                </div>
+                                <div class="text-right col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="roundIcon likeIcon">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </div>
+                                    <div class="roundIcon rightArrowIcon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--posted info and rating-->
+                            <div class="row verseBottom">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                                    <span class="postedBy">Strawberry</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 text-left">
+                                    <span class="votesNumber">18</span><i class="fa fa-thumbs-up"></i>
+                                </div>
+                            </div><!--row-->                          
+                        </div>
+                        <hr />
+                        <!--*************************Listing*********************-->
+                        <div class="verseStart">
+                            <div class="row">
+                                <div class="imageHolder col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt="" />
+                                </div>
+                                <div class="twoLines col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <span class="word">George</span> <span class="word">prefers</span> <span class="word">to</span> <span class="word">swim</span>
+                                    <br />
+                                    <span class="word">And</span> <span class="word">sometimes</span> <span class="word">to</span> <span class="word">dream</span>
+                                    <br />
+                                </div>
+                                <div class="text-right col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="roundIcon likeIcon">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </div>
+                                    <div class="roundIcon rightArrowIcon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--posted info and rating-->
+                            <div class="row verseBottom">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                                    <span class="postedBy">Strawberry</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 text-left">
+                                    <span class="votesNumber">18</span><i class="fa fa-thumbs-up"></i>
+                                </div>
+                            </div><!--row-->    
+                        </div>
+                        <hr />
+                        <!--*************************Listing*********************-->
+                        <div class="verseStart">
+                            <div class="row">
+                                <div class="imageHolder col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                                </div>
+                                <div class="twoLines col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <span class="word">George</span> <span class="word">is</span> <span class="word">doing</span> <span class="word">box</span>
+                                    <br />
+                                    <span class="word">And</span> <span class="word">Jim</span> <span class="word">is</span> <span class="word">eating</span> <span class="word">lox</span>
+                                </div>
+                                <div class="text-right col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="roundIcon likeIcon">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </div>
+                                    <div class="roundIcon rightArrowIcon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--posted info and rating-->
+
+                            <div class="row verseBottom">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                                    <span class="postedBy">NerdyNerd</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 text-left">
+                                    <span class="votesNumber">18</span><i class="fa fa-thumbs-up"></i>
+                                </div>
+                            </div><!--row-->                           
+                        </div><!--verseEnding-->
+                        <hr />
+                        <!--*************************Listing. Hidden Verse.*********************-->
+                        <div class="verseStart">
+                            <div class="row">
+                                <div class="imageHolder col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                                </div>
+                                <div class="twoLines col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <div class="hiddenFirstLine">
+                                        <p class="blank"></p>
+                                        <p class="blank"></p>
+                                        <p class="lastWord">walk</p>
+                                    </div>
+                                    <div class="hiddenSecondLine">
+                                        <p class="blank"></p>
+                                        <p class="blank"></p>
+                                        <p class="lastWord">ice cream</p>
+                                    </div>
+                                </div>
+                                <div class="text-right col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="roundIcon likeIcon">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </div>
+                                    <div class="roundIcon rightArrowIcon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--posted info and rating-->
+                            <div class="row verseBottom">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                                    <span class="postedBy">NerdyNerd</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 text-left">
+                                    <span class="votesNumber">18</span><i class="fa fa-thumbs-up"></i>
+                                </div>
+                            </div><!--row-->                          
+                        </div><!--verseEnding-->
+                        <hr />
+                       
+
+                    </div><!--allverses-->
+                    <div class="tab-pane" id="publicMode"></div>
+                    <div class="tab-pane" id="surpriseMode">...</div>
+                </div>  
+                             
+               
+            </div>
+        
+        <!--*****************************Sidebar*******************-->
+        <div class="col-lg-3 col-md-3" id="communitySidebar">
+
+            <div class="sidebarWidget">
+                <button class="btn btn-lg btn-block startVerseBtn btn-blue" type="submit">
+                    I want to start my verse!
+                </button>
+            </div>
+
+            <div class="sidebarWidget" id="banner2">
+                    <p>ChainDate. <br/>
+                    New and Exciting Way To Meet People</p>                   
+            </div>
+
+                 <!--Tags-->
+                 <div class="sidebarWidget tagsWidget">
+                    <h3>Most Popular Tags</h3>
+                    <div class="tagCloud">
+                        <a>Funny</a>
+                        <a>Romantic</a>
+                        <a>Silly</a>
+                        <a>Life</a>
+                        <a>Work</a>
+                        <a>Relationship</a>
+                    </div>    
+                </div>
+
+                <!--most popular versers-->
+                <div class="sidebarWidget" id="versersWidget">
+                    <h3>Top Versers</h3>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">                          
+                             <img class="img-responsive" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                            </div>
+                        <div class="friendInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive" src='@Url.Content("~/Content/images/girlhappy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Strawberry</h4>
+                            <p class="blogDate">27 followers</p>                           
+                        </div>
+                    </a>
+
+                    <a href="#" class="friendSnippet row">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt="" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+                </div> <!--sidebar-->
+
+        </div>
+    </div>
+</div>
+
+        
+
+<script>
+    function document_ready() {
+
+
+        //add class active to menu when on this page
+        $('.navbar-nav .@ViewContext.RouteData.Values["controller"].ToString().ToLower()').addClass('active');
+
+        //redirect to finish a verse on click
+        $('.verseStart').click(function () {
+            location.href = '@Url.Content("~/Community/FinishVerse")';
+        })
+
+        $('.startVerseBtn').click(function () {
+            location.href = '@Url.Content("~/Verse/Create_Editor_Page1")';
+        })
+
+
+        //on like icon click, add 1 to number of votes and change icon to black
+        var voteAdded = false;
+        $('.likeIcon').click(function () {
+
+            if (voteAdded == false) {
+                var currentVoteCount = $(this).closest('.verseEnding').find('.votesNumber').text();
+                currentVoteCount = parseInt(currentVoteCount.trim(), 10);
+                $(this).find('i').removeClass('fa-thumbs-o-up').addClass('fa-thumbs-up');
+                currentVoteCount++;
+                $(this).closest('.verseEnding').find('.votesNumber').text(currentVoteCount);
+                voteAdded = true;
+            }
+
+        });
+
+    }
+</script>

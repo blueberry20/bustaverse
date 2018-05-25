@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Create_Editor_Step3";
+}
+<link href="../../Content/css/Verse/Create_Editor_Page3.css" rel="Stylesheet" />
+
+<div class="pageContainer" id="previewPage">
+    
+    <!--*************************Verse Preview***************-->
+       
+            <div class="container">
+                <h1 class="text-center">Preview</h1>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div id="previewWrapper">
+                            <div id="verse">
+                                <p id="line1"></p>
+                                <p id="line2"></p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-default btn-lg" id="whiteBgBtn">White</button>
+                        <button type="submit" class="btn btn-default btn-lg" id="anyPicBtn">Any Picture</button>
+                        <button type="submit" class="btn btn-default btn-lg" id="romanticBgBtn">Romantic Picture</button>
+                        <button type="submit" class="btn btn-default btn-lg" id="funBgBtn">Fun Picture</button>
+       
+                    </div>
+
+                    <!--right side-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="verseOptions">
+                        <div id="mode"><h2>Mode:</h2> </div>
+                        <div id="previewHashtags"><h2>Hashtags:</h2></div>
+                        <div id="category"><h2>Category: </h2> </div>
+                        <div id="challenging"><h2>Challenging: </h2> </div>
+                        <!--Share and Comment Row-->
+                        <div class="shareDiv row coloredSocialIcons">                                  
+                                <ul class="social-icons">
+                                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li class="gplus"><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li class="mail"><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+                                </ul><!--/ .social-icons-->                                               
+                            </div>  
+                     </div>
+                </div>
+
+                
+                <div class="nextStep">
+                    <div class="row ">
+                        <div class=col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <a href='/Community/Index' class="btn btn-lg btn-blue nextBtn"  type="submit">Submit</a>
+                            <a href='/Verse/Create_Editor_Page2' class="btn btn-lg btn-default nextBtn" id="backBtn" type="submit">Go back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+</div>     
+
+<script>
+    function document_ready() {
+
+        //get mode selected - visible or surprise
+        var selectedMode = getCookie('selectedMode');
+        $('#mode').append(selectedMode);
+
+
+        //get verse text cookie
+        var verseText = getCookie('verseText');
+
+        //split text into lines if br is found
+        lines = verseText.split('<br>');
+        var line1 = lines[0];
+        var line2 = lines[1];
+
+        //split lines into words
+        var line1Words = line1.split(' ');
+        var line2Words = line2.split(' ');
+
+        //if mode is visible, display all words, append words to each line
+        if (selectedMode == "visible") {
+            for (i = 0; i < line1Words.length; i++) {
+                $('#line1').append(' <span class="wordSpan">' + line1Words[i] + '</span>');
+            }
+
+            for (j = 0; j < line2Words.length; j++) {
+                $('#line2').append('<span class="wordSpan">' + line2Words[j] + '</span>');
+            }
+        }
+        else { //if mode is surprise
+            //get last word in each line
+            var lastWord1 = line1Words[line1Words.length - 1];
+            var lastWord2 = line2Words[line2Words.length - 1];
+
+            //append 3 blank words + last word in each line
+            $('#line1').append('<span class="blankSpan">*****</span><span class="blankSpan">*****</span><span class="blankSpan">*****</span>' + '<span class="wordSpan">' + lastWord1 + '</span>');
+            $('#line2').append('<span class="blankSpan">*****</span><span class="blankSpan">*****</span><span class="blankSpan">*****</span>' + '<span class="wordSpan">' + lastWord2 + '</span>');
+        }
+
+    /*    //break verse string to span words 
+        var words = verseText.split(' ');       
+        if (selectedMode == "visible") {
+            for (i = 0; i < words.length; i++) {
+                $('#verse').append(' <span class="wordSpan">' + words[i] + '</span>');              
+            }
+        }
+     */
+
+
+        //get cookies with verse options
+        var category = getCookie('selectedCategory');
+        
+        var hashtagCount = getCookie('hashtagCount');
+        var audience = getCookie('challengeAudience')
+
+               
+        //append hashtags    
+        for (var i = 0; i < hashtagCount; i++) {
+            var enteredHashtag= getCookie('enteredHashtag' + i);
+            $('#previewHashtags').append('<div class="hashtags">' + enteredHashtag +'</div>');
+        }
+
+        //append category and who challenging
+        $('#category').append(category);
+        $('#challenging').append(audience);
+
+
+        //on button click change background of verse
+        $('#anyPicBtn').click(function () {
+            $('#previewWrapper').css('background-image', 'url(../../Content/images/floorsky2_sm.jpg)');
+            $('#previewWrapper').css('background-size', 'cover');
+        })
+
+       
+        $('#romanticBgBtn').click(function () {
+            $('#previewWrapper').css('background', 'url(../../Content/images/kiss.jpg)');
+            $('#previewWrapper').css('background-size', 'cover');
+        })
+
+        $('#funBgBtn').click(function () {
+            $('#previewWrapper').css('background', 'url(../../Content/images/dog.jpg)');
+            $('#previewWrapper').css('background-size', 'cover');
+        })
+
+        $('#whiteBgBtn').click(function () {
+            $('#previewWrapper').css('background', '0');         
+        })
+
+        
+    }
+</script>

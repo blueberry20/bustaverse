@@ -1,0 +1,313 @@
+﻿/******************Create a verse. typewriter*********************/
+ @font-face {
+  font-family: 'SpecialElite';
+  src: url('fonts/SpecialElite.ttf');
+}
+
+#typingTextDiv {
+ position:fixed;
+ margin-left:22%;
+ margin-right:22%;
+ bottom:50px;   
+ background-color: #fff;
+ height:52px;
+ border:1px solid #666;
+ border-radius:5px;
+ background-color:#000;
+ color:#fff;
+ font-size:16px;
+ font-family: 'SpecialElite';
+ width:60%;
+}
+
+#typingInput {  
+ width:83%;    
+ font-family: 'SpecialElite';
+ background-color:#000;
+ height:50px;
+ color: #fff;
+ padding-left:20px;
+ border:none;
+}
+
+#typingInput:focus, #typingInput:active {
+ border:none !important;   
+ border-color: #000;
+ box-shadow: 0 1px 1px #000 inset, 0 0 8px #000;
+ outline: 0 none;
+}
+
+#enterBtn {
+height: 50px;
+border: 1px solid #666;
+float:right;
+width:15%;
+}
+
+
+#carriageHolder {
+position: absolute;
+left: 33%;
+bottom: 21%;
+width:65%;
+}
+
+#carriageImg {
+  z-index:100;
+}
+
+#paperHolder {
+ position:absolute;
+ bottom:5%;
+ left:22.85%;   
+ height:90%;
+ width:55.35%;
+ z-index:-10;
+ overflow:hidden;
+}
+
+#paper {
+ position:absolute;
+ left:0;
+ top:0;  
+ width:100%;
+}
+
+#insidePaperDiv {
+width:100%;
+height:400px;
+position:absolute;
+top: 0;
+left: 0;
+padding:0 50px;
+padding-left:10%;
+padding-right:10%;
+font-size:16px;
+font-weight: 600;
+font-family: 'SpecialElite';
+}
+
+#insidePaperDiv h1 {
+    font-family: 'SpecialElite';
+    font-size:28px;
+    text-align:center;
+    padding-bottom:16.5%;
+    margin:0;
+    padding-top:10%;
+}
+
+#insidePaperDiv div {
+ display:inline-block;   
+}
+
+#insidePaperDiv span {
+ font-family: 'SpecialElite';   
+ padding: 0 20px;
+}
+
+#typewriterHolder {
+ position:absolute;
+ margin-left:22%;
+ margin-right:22%;
+ bottom:5%;
+ width:60%;
+  -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+/*height queries*/
+
+@media only screen
+and (max-height:900px) {
+    #carriageHolder {
+     bottom: 22%;  
+    }  
+}
+
+@media only screen
+and (max-height:800px) {
+    #carriageHolder {
+     bottom: 24%;  
+    }  
+}
+
+@media only screen
+and (max-height:700px) {
+    #carriageHolder {
+     bottom: 26%;  
+    }  
+}
+
+
+@media only screen
+and (max-height:600px) {
+    #carriageHolder {
+     bottom: 28%;  
+    }  
+    
+    #insidePaperDiv h1 {
+     padding-bottom:10%;   
+    }
+}
+
+@media only screen
+and (max-height:500px) {
+    #carriageHolder {
+     bottom: 28%;  
+    }  
+    
+    #insidePaperDiv h1 {
+     padding-bottom:6%;   
+    }
+}
+
+
+@media only screen
+and (max-height:450px) {
+    #carriageHolder {
+     bottom: 28%;  
+    }  
+    
+    #insidePaperDiv h1 {
+     padding-bottom:4%;   
+    }
+}
+
+@media only screen
+and (max-height:400px) {
+    #carriageHolder {
+     bottom: 28%;  
+    }  
+    
+    #insidePaperDiv h1 {
+     padding-bottom:1%;   
+    }
+}
+
+
+
+/*width queries*/
+@media only screen
+and (max-width:1200px) {
+   #typewriterHolder {
+    margin-left:10%;
+    margin-right:10%;   
+    width:75%;
+   }
+   
+   #typingTextDiv {
+    margin-left:10%;
+    margin-right:10%;  
+    width:75%;
+    font-size:16px; 
+   }
+   
+   #carriageHolder {
+       left:23%;
+       width:75%;      
+   }  
+   
+    #insidePaperDiv {
+       font-size:16px;
+   }
+   
+}
+
+
+
+@media only screen
+and (max-width:998px) {
+   #typewriterHolder {
+    margin-left:10%;
+    margin-right:10%;   
+    width:80%;
+   }
+   
+   #typingTextDiv {
+    margin-left:10%;
+    margin-right:10%;  
+    width:80%; 
+    font-size:18px; 
+   }
+   
+   #carriageHolder {
+       left:23%;
+       width:80%;
+   }  
+   
+    #insidePaperDiv {
+       font-size:18px;
+   }
+   
+}
+
+@media only screen
+and (max-width:800px) {
+   #typewriterHolder {
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;  
+   }
+   
+   #typingTextDiv {
+    margin-left:5%;
+    margin-right:5%;  
+    width:90%; 
+    font-size:20px;
+   }
+   
+   #carriageHolder {
+    width:90%;
+   }  
+   
+    #insidePaperDiv {
+       font-size:20px;
+   }
+   
+   #typingInput {
+    width:75%;   
+   }
+   
+   #enterBtn {
+    width:22%;   
+   }
+}
+
+
+
+
+@media only screen
+and (max-width:668px){
+    #carriageHolder {
+    bottom:28%;
+    }
+    
+    #typewriterHolder {
+    width:90%;
+    bottom:12%;
+   }
+   
+   #insidePaperDiv {
+       font-size:16px;
+   }
+   
+    #typingTextDiv {
+     font-size:16px;   
+    }
+     
+}
+
+@media only screen
+and (max-width:500px){
+    #carriageHolder {
+    }
+}
+
+@media only screen
+and (max-width:400px){
+    #carriageHolder {    
+    }
+}

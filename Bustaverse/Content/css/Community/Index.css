@@ -1,0 +1,142 @@
+﻿
+
+/******************Community Verses*********************/
+
+#communityPage {
+ background-color: rgba(255,255,255, 0.8);   
+}
+
+#communityPage h2 {
+    margin-top:0;    
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+   padding-left:15px;
+}
+
+/********main content*****/
+#communityVerses {
+ background-color: #fff;   
+}
+
+#communityVerses .nav-tabs {
+ margin-bottom:20px;   
+}
+
+#communityVerses .nav-tabs>li>a {
+font-weight: 700;
+background-color: #f0f0f0;
+color: #666;
+text-transform: uppercase;
+}
+
+
+/****************verse*************/
+
+
+.hiddenFirstLine, .hiddenSecondLine{
+line-height:28px;
+vertical-align:bottom;
+}
+
+.blank {
+ width: 40px;
+ height:28px;  
+ display:inline-block;
+ width:85px;
+ vertical-align:bottom;
+ background-color: #4F5D63;
+}
+
+.lastWord { 
+ display:inline-block; 
+ padding: 0 2px;
+ background-color:#4F5D63;
+ color:#fff;
+ font-family: 'PT Sans Caption', sans-serif;
+ font-size:20px;
+ height:28px;
+}
+    
+.word {
+    color:#fff;
+    padding: 0 2px;
+    background-color:#4F5D63;
+    font-size:20px;
+   /* font-family: 'PT Sans Caption', sans-serif;*/
+}  
+
+
+#finishVersePage .twoLines {
+ margin-left:0;   
+ font-size:26px;
+}
+
+#finishVersePage .verseRow {
+ margin:0;
+ display:block;   
+}
+
+
+.postedBy {
+    font-weight:600;
+}
+
+
+#otherResponseh3 {
+ background-color: #00cccb;
+ padding: 5px;   
+}
+
+hr {
+    border-top:5px solid #eee;
+}
+
+
+ .verseStart {
+ padding:10px;   
+}
+
+ .verseStart:hover {
+     background-color:#f0f0f0;
+     cursor:pointer;
+ }
+
+
+.votesNumber {
+    font-size:16px;
+    margin-right:10px;
+}
+
+
+.roundIcon {
+    height:40px;
+    width:40px;
+    border-radius:50%;
+    background-color:#fff;
+    text-align:center;
+    line-height:40px;
+    border:1px solid #00cccb;
+    font-size:20px;
+    display:inline-block;
+    margin-bottom:10px;
+}
+
+.roundIcon:hover {
+    background-color: #00e6e4;
+    cursor:pointer;
+}
+
+
+
+
+
+/***************community page. sidebar****************/
+.sidebarWidget {
+    padding:0;   
+}  
+
+#communityPage .startVerseBtn {
+    background-color: #00cccb;
+}

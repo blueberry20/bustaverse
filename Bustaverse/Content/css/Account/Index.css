@@ -1,0 +1,90 @@
+﻿
+/*MY PAGE
+-------------------------------------------------- */
+
+#myPage h3 {
+ background-color: #0a1821;
+ color: #fff;   
+ text-align:center; 
+}
+
+
+#displayName {
+ font-size:40x;   
+}
+
+#displayFollowers, #displayRating {
+ display:inline-block;
+ height:100px;
+ width:100px;
+ border:1px solid #666;
+ border-radius:5px;   
+ position:relative;
+ text-align:center;
+}
+
+.number {
+ font-size:40px;   
+}
+
+#buttonHolder {
+ margin-top:20px;   
+}
+
+.btn-verse {
+ height:80px;   
+}
+
+.no-touch .btn-verse:hover {
+ background-color: #36a6cd;   
+}
+
+@media only screen 
+and (max-width:992px) {
+     .btn-verse {
+     height:80px;
+     width:360px;
+     margin:0 auto;   
+    }
+}
+
+
+@media only screen 
+and (max-width:768px) {
+     #buttonHolder {
+      margin-bottom:20px;   
+     }
+}
+
+
+
+/*****************************************Verses*****************************/
+
+.verseSnippet {
+ border:1px solid #b1e3f4;
+ border-radius:10px;   
+ text-align:center;
+ margin-bottom:20px;
+ padding:7px; 
+ color:#000;
+ cursor:pointer;
+ -moz-box-shadow: 1px 1px 3px 2px #666;
+  -webkit-box-shadow: 1px 1px 3px 2px #666;
+  box-shadow:         1px 1px 3px 2px #666; 
+}
+
+
+
+#profilePic {
+ height:200px;   
+}
+
+.verseStats {
+ background-color: #fff;   
+}
+
+.verseStats p {
+ margin:-8px;
+ font-size:14px; 
+ font-weight:600;
+}

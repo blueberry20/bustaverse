@@ -1,0 +1,100 @@
+﻿
+/****************************PREVIEW****************************/
+
+#previewPage {
+ background-color: #f0f0f0;   
+ padding-top:50px;
+}
+
+#previewPage .container {
+ background-color: #fefefe;   
+ padding-top:20px;
+}
+
+#previewPage h1 {
+margin-top: 0;
+text-transform: uppercase;
+font-size: 26px;
+font-weight: 700;
+font-family: 'Raleway', sans-serif;
+padding-left: 15px;
+}
+
+#previewWrapper {
+ height:300px;  
+ padding:30px; 
+ position:relative;
+ overflow:hidden;
+ border:1px solid #000;
+ margin-bottom: 20px;
+ background-position: 50% 50%;
+}
+
+#verse { 
+ margin:0 auto;
+ position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align:center;
+}
+
+.wordSpan {
+ background-color: #000;
+ color: #fff;   
+ font-size:34px;
+ line-height:2em;
+ padding:2px;
+ margin:4px;
+}
+
+.blankSpan {
+ background-color: #000;
+ color: #000;   
+ font-size:34px;
+ line-height:2em;
+ padding:2px;
+ margin:4px;  
+ width:80px;
+}
+
+/******************right side***/
+#verseOptions {
+ font-size:18px;  
+ padding-left:30px; 
+}
+
+.hashtags {
+    color:#000;
+    border:1px solid #39b3d7;
+    border-radius: 4px;
+    padding:5px;
+    margin:5px;
+    display:inline-block;
+    
+}
+
+
+#verseOptions h2 {  
+ font-size:18px;
+ text-transform:uppercase;
+ margin-top:0px;
+ display:inline;
+}
+
+#mode, #previewHashtags, #category, #challenging {
+ margin-bottom:12px;   
+}
+
+#backBtn {
+ background-color: #B8B8B8;
+ width:150px; 
+ color:#fff;  
+ text-transform:uppercase;
+}
+
+#backBtn:hover {
+ color: #666;
+ border:none;   
+}

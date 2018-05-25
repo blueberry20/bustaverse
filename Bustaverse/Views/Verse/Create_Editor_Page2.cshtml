@@ -1,0 +1,288 @@
+﻿@{
+    ViewBag.Title = "Create_Editor_Step2";
+}
+
+<link href="../../Content/css/Verse/Create_Editor_Page2.css" rel="Stylesheet" />
+
+<div class="pageContainer" id="selectFriendsPage">
+
+    <!--**********************Step 2. Select Category**************-->
+    <div class="verseSteps" id="step2">
+        <div class="container">
+            <h2>2. Select a category</h2>
+            <div class="categoriesCloud">
+                <a class="selectedCategory">Uncategorized</a>
+                <a>Funny</a>
+                <a>Romantic</a>
+                <a>Silly</a>
+                <a>Life</a>
+                <a>Work</a>
+                <a>Relationship</a>
+                <a>Funny</a>
+                <a>Romantic</a>
+                <a>Silly</a>
+                <a>Life</a>
+                <a>Work</a>
+                <a>Relationship</a>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************Step 3. Add Hashtags**************-->
+    <div class="verseSteps" id="step3">
+        <div id="step3bg">
+            <div class="container">
+                <h2>3. Add a Hashtag</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                        <input type="text" class="form-control input-lg" id="hashtagInput" placeholder="Your associations with the verse">
+                    </div>
+
+                    <div class="col-md-2 col-sm-3 col-xs-12">
+                        <button type="submit" class="btn btn-success btn-lg" id="addHashtagBtn">Add</button>
+                    </div>
+                </div>
+
+                <div class="row" id="addedTagsDiv">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************Step 4. Select a mode**************-->
+    <div class="verseSteps" id="step4">
+        <div class="container">
+            <h2>4. Select a mode</h2>
+
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                    <div class="radio" id="visibleMode">
+                        <label>
+                            <input type="radio" name="mode" value="visible">
+                            Visible
+                        </label>
+                        <p class="explanation">Users can see your text</p>
+                    </div>
+                    <div class="radio" id="surpriseMode">
+                        <label>
+                            <input type="radio" name="mode" value="surprise">
+                            Surprise
+                        </label>
+                        <p class="explanation">Users can only see last word in each line</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!--container-->
+
+    </div>
+
+    <div id="createEditorNext1" class=" nextStep">
+
+        <a href='/Verse/Create_Editor_Page2' class="btn btn-lg btn-red nextBtn" id="submitVerseBtn" type="submit">Next</a>
+        <div class="row">
+            <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">Please enter verse text!</p>
+        </div>
+    </div>
+    
+    <!--*************************step 5. Select friends***************-->
+        <div class="verseSteps" id="step5">
+            <div class="container">
+                <h2>5. Who do you want to challenge?</h2>
+                <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="radioHolder">
+                            <div class="radio audienceRadio" id="playingEverybody">
+                                <label>
+                                     <input type="radio" name="challenge" value="everybody">
+                                     Everybody!                        
+                                </label>
+                            </div>
+                            <div class="radio audienceRadio">
+                                <label>
+                                    <input type="radio" name="challenge" value="friends">
+                                    I want to challenge my friend!
+                               </label>
+                            </div> 
+                            <div class="text-center">
+                                <span class="glyphicon glyphicon-chevron-down" id="arrowFriends"></span>
+                            </div>
+                            <div>
+                                <h3>Invite by email</h3>
+                                <div class="input-group" id="zipcodeInputGroup" >
+                                    <input type="text" class="form-control" placeholder="Enter your friend's email">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-success" type="button">Invite</button>
+                                        </span>
+                                </div><!-- /input-group -->
+                                <h3>Or select from the list below</h3>
+                            </div>
+
+                        </div>
+                </div>
+                <hr />
+                <div id="selectFriendsDiv" class="row">
+                    
+                   <a href="#" class="friendSnippet col-lg-3">
+                        <div class="imageHolder pull-left">
+                            <img class="img-responsive img-circle" src='@Url.Content("~/Content/images/funnyguy.jpg")' alt"" />
+                        </div>
+                        <div class="friendInfo">
+                            <h4>Shrek</h4>
+                            <p class="blogDate">85 followers</p>                          
+                        </div>
+                    </a>
+                
+                </div><!--selectfriendsdiv-->
+                      
+            </div>
+        </div><!--step5-->
+
+
+        <div class="nextStep">
+            <div class="row ">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a href='/Verse/Create_Editor_Page3' class="btn btn-lg btn-red nextBtn" type="submit">Next</a>
+                    <a href='/Verse/Create_Editor_Page1' class="btn btn-lg btn-default nextBtn" id="backBtn" type="submit">Go back</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script>
+    function document_ready() {
+
+
+        //step 2. add selected class to categorie on click
+        $(".categoriesCloud a").click(function () {
+
+            //clear other selected classes, so the use can only pick one
+            $(".categoriesCloud a").removeClass("selectedCategory");
+
+            //add class selected to the element that was clicked
+            $(this).toggleClass("selectedCategory");
+
+            var categoryValue = $(this).text();
+
+            //save categorie value to cookie
+            if ($(this).hasClass("selectedCategory")) {
+                setCookie('selectedCategory', categoryValue, 365);
+            }
+        });
+
+        //if no category was clicked, set cookie value to uncategorized        
+        var categoryValue = "Uncategorized";
+        setCookie('selectedCategory', categoryValue, 365);
+
+
+
+
+        //step 3. add hashtag to show what value was entered
+        var hashtagCount = 0;
+        var hashTags = [];
+
+        $('#addHashtagBtn').click(function () {
+            var hashtagValue = $('#hashtagInput').val().toLowerCase();
+            //check that value wasn't entered already and that it's not empty
+            if (hashTags.indexOf(hashtagValue) == -1 && hashtagValue !== '') {
+                //add to array
+                hashTags.push(hashtagValue);
+                hashtagCount++;
+                setCookie('hashtagCount', hashtagCount, 365);
+                //set cookie
+                setCookie('enteredHashtag' + (hashtagCount - 1), hashtagValue, 365);
+                //display newly added hashtag on screen, add remove glyphicon
+                var hashtag = $('<div>' + hashtagValue + '</div>').addClass('addedHashtag').append('<span class="glyphicon glyphicon-remove"></span>');
+                hashtag.appendTo($('#addedTagsDiv'));
+            } else {
+                $('#hashtagInput').val('').focus();
+            }
+
+            //on click of newly created hashtag, remove it
+            hashtag.click(function () {
+                $(this).remove();
+                //find index of removed array, and delete 1 item
+                hashTags.splice(hashTags.indexOf($(this).text()), 1);
+                hashtagCount--;
+                //update cookies
+                setCookie('hashtagCount', hashtagCount, 365);
+                for (var i = 0; i < hashTags.length; i++) {
+                    setCookie('enteredHashtag' + i, hashTags[i], 365);
+                }
+            });
+
+
+            //set focus back to input
+            $('#hashtagInput').val('').focus();
+        }); //end of button click
+
+        //on enter key, call click button event
+        $("#hashtagInput").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#addHashtagBtn").click();
+            }
+        });
+
+
+        //step 4. select visible or hidden mode
+
+        $('#step4 .radio').click(function () {
+            //set input attribute to checked, since it doesn't happen automatically
+            $(this).find('input:radio').attr('checked', true);
+            //get value from the checked input and set it to cookie
+            var selectedMode = $('input[name=mode]:checked').val();
+            setCookie('selectedMode', selectedMode, 365);
+        })
+
+        //on load select visible radio by default, which would work if no radio button was clicked
+        $('#visibleMode').click();
+
+
+
+        //on click of NEXT btn, check if verse text is not empty
+        $('#submitVerseBtn').click(function (e) {
+            if ($('#editor textarea').val() == '') {
+                e.preventDefault();
+                $('#createEditorNext1 p').show();
+            }
+
+        })
+
+
+        //STEP 5. load facebook friends
+        $(document).bind('fbAsyncInit', function () {
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+
+                    //perform task
+                    FB.api('me/friends?fields=name,picture', function(response) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                $('#selectFriendsDiv').append('<a href="#" class="friendSnippet col-lg-3"><div class="imageHolder pull-left"><img class="img-responsive img-circle" src="' + response.data[i].picture.data.url + '" alt="" /></div><div class="friendInfo"><h4>' + response.data[i].name + '</h4><p class="blogDate">85 followers</p></div></a>');
+                            }
+                    });
+
+                } else if (response.status === 'not_authorized') {
+                    FB.login();
+                } else {
+                    FB.login();
+                }
+            });
+        });
+
+
+        //set cookie for radio button - challenging everybody or a friend
+        $('.audienceRadio').click(function () {
+            //set input attribute to checked, since it doesn't happen automatically
+            $(this).find('input:radio').attr('checked', true);
+            //get value from the checked input and set it to cookie
+            var challengingWho = $('input[name=challenge]:checked').val();
+            setCookie('challengeAudience', challengingWho, 365);
+        })
+
+        //on load select visible radio by default, which would work if no radio button was clicked
+        $('#playingEverybody').click();
+        
+    }
+    
+
+</script>

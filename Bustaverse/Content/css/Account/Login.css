@@ -1,0 +1,7 @@
+﻿#loginPage .container {
+    text-align:center;
+}
+
+.form-signin .checkbox {
+    text-align:left; /*Move remember me to the left*/
+}

@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<link href="../../Content/css/Verse/Create_Typewriter.css" rel="Stylesheet" />
+
+<!--**************************Create a verse. Typewriter.***************************-->
+<div class="pageContainer" id="typeVersePage">
+   
+        <!--Carriage-->
+         <div id="carriageHolder">
+            <img id="carriageImg" class="img-responsive" src='@Url.Content("~/Content/images/carriage.png")' alt="" />            
+                <div id="paperHolder">
+                    <img id="paper" class="img-responsive" src='@Url.Content("~/Content/images/paper_sm.jpg")' alt="" />
+                    <div id="insidePaperDiv">
+                        <h1>My Verse</h1>
+                        <span id="line0"></span><br />
+                        <span id="line1"></span><br />
+                        <span id="line2"></span><br />
+                        <span id="line3"></span><br /> 
+                        <span id="line4"></span><br />
+                        <span id="line5"></span><br />
+                        <span id="line6"></span><br />
+                        <span id="line7"></span><br />                 
+                    </div>
+                </div>
+           
+         </div>
+
+         <div id="typewriterHolder">
+            <img id="typewriter" class="img-responsive" src='@Url.Content("~/Content/images/typewriter.png")' alt="" />
+        </div>
+
+        <!--**********Enter text******************-->
+        <div id="typingTextDiv">
+           <input id="typingInput" type="text"  placeholder="Enter text here" required autofocus>   
+           <img id="enterBtn" src='@Url.Content("~/Content/images/enterBtnSq.png")' alt="" />       
+        </div>  
+         
+      <!-- <img id="backspaceBtn" src='@Url.Content("~/Content/images/backspaceBtn.png")' alt="" /> -->
+   
+</div>
+
+
+
+<script>
+    var initialPosition;
+
+    function showTypewriter() {
+        /* ----------------------use backstretch to center image------------- */
+        $('#typeVersePage').backstretch("../../Content/images/vintageroom_sm.jpg");
+        //activate fancy input plugin and set focus to input field
+        //$('#typingTextDiv :input').fancyInput().focus();
+
+        //get current left position of the div that holds the carriage
+        initialPosition = $('#carriageHolder').offset().left;
+
+        //$('#paperHolder h1').css('padding-bottom', $('#insidePaperDiv span').height() * 10 + 'px');
+
+        $('#typingTextDiv').keydown(function (e) {
+
+            if (e.keyCode == 8) { //backspace
+                spacesound.play();
+            }
+            else if (e.keyCode == 13) { //enter
+                if (!playCarriageReturn()) {
+                    var event = e || window.event;
+                    event.preventDefault();
+                    ding.play();
+                }
+            }
+            else { //other keys
+            //when reached the end of line prevent typing in input field
+                if (carriagereturned) {
+                    $('#carriageHolder').stop();
+                    //fullroll.stop();
+                    carriagereturned = false;
+
+                }
+                //check width
+                if ($('#line' + currentline).outerWidth() > $('#insidePaperDiv').innerWidth()) {
+                    var event = e || window.event;
+                    event.preventDefault();
+                    ding.play();
+                }
+                else {
+                    keystrokecounter++;
+
+                    if (keystrokecounter % 2 == 0) {
+                        keystroke1.play();
+                    }
+                    else {
+                        keystroke2.play();
+                    }
+
+                }
+            }
+        });
+
+        $('#enterBtn').click(function () {
+            playCarriageReturn();
+            $('#typingInput').focus();
+        })
+
+        //move carriage over on key press
+        $('#typingTextDiv').keyup(function (e) {
+
+            //  $('#carriageHolder').stop();
+            $('#line' + currentline).html($('#typingInput').val());
+
+            var inputWidth = $('#line' + currentline).width();
+            $('#carriageHolder').css({ 'left': initialPosition - inputWidth - 20 });
+
+        });
+
+    }//document_ready
+
+
+
+    //on enter, move paper up and carriage left
+    function playCarriageReturn() {
+
+        if (lines.length < 7) {
+            fullroll.play();
+
+            currentline++;
+
+            lines.push($('#typingInput').val());
+            $('#typingInput').val('');
+
+            var lineHeight = $('#insidePaperDiv span').css('line-height').replace('px', '');
+            var paperHeight = $('#paperHolder').css('height').replace('px', '');
+            
+            //increase paper height on enter         
+            $('#paperHolder').css('height', parseInt(paperHeight) + parseInt(lineHeight) + 'px');
+
+            $('#carriageHolder').animate({ 'left': initialPosition - 20 }, 1100);
+
+            carriagereturned = true;
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    var carriagereturned = false;
+
+    var currentline = 0;
+    var lines = new Array();
+    var keystrokecounter = 0;
+
+    var keystroke1 = loadAudio('/content/audio/typewriter/keystroke1.wav');
+    var keystroke2 = loadAudio('/content/audio/typewriter/keystroke2.wav');
+    var ding = loadAudio('/content/audio/typewriter/fullding.wav');
+    var spacesound = loadAudio('/content/audio/typewriter/spacesound.wav');
+    var fullroll = loadAudio('/content/audio/typewriter/fullroll.wav');
+    
+    function loadAudio(uri) {
+        var audio = new Audio();
+        audio.autoplay = false;
+        audio.src = uri;
+        return audio;
+    }
+
+
+</script>

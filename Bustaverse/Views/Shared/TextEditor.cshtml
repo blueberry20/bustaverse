@@ -1,0 +1,158 @@
+﻿<div id="textEditorOverlay">
+  
+    
+    <div id="textEditor">
+        <div id="editorLeftBar">
+            <i class="fa fa-angle-right"></i>
+        </div>
+
+        <div id="displayBox" >
+            <h2>Finish this verse</h2>
+            <div id="toolbar">
+                <i id="biggerFont" class="fa fa-font" data-toggle="tooltip" data-placement="top" title="Make font bigger"></i>
+                <i id="smallerFont" class="fa fa-font" data-toggle="tooltip" data-placement="top" title="Make font smaller"></i>
+            </div>
+            <div id="textEditorVerseBeginning"></div>
+            <button id="okBtn" class="btn btn-lg">Let's submit!</button>
+        </div>
+
+        <div id="editableBox" contenteditable="true" data-ph="Enter your verse ending here"></div>
+    </div>
+
+    <!--If nothing was entered display this modal with error-->
+    <div id="enterVerseError2" class="modal enterVerseError" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Please enter verse ending!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---
+    <div style="position: relative; width: 500px; height: 200px">
+        <div id="vividboxbackground" style="position: absolute; top: 0; left: 0; width: 500px; height: 200px; border: thin solid #ddd"></div>
+        <div contenteditable="true" id="vividbox" onkeyup="enrichtext()" style="position: absolute; top: 0; left: 0; width: 500px; height: 200px; border: thin solid #ddd"></div>
+    </div>
+
+    <input type="button" value="move cursor" onclick="$('#vividbox').selectRange(3); $('#vividbox').focus();" />
+    <script>
+        var vividbox = document.getElementById("vividbox");
+        function enrichtext() {
+
+            var boxcontent = $('#vividbox').html();
+            var words = boxcontent.split(' ');
+
+            for (var i = 0; i < words.length; i++) {
+                if (words[i] == 'world') {
+                    boxcontent = boxcontent.replace(/\bworld\b/gi, '<span style="background-color: yellow">world</span>');
+                    $('#vividboxbackground').html(boxcontent);
+
+
+                }
+            }
+        }
+    </script> -->
+  
+</div>
+<script>
+
+    function document_ready() {
+        $('#biggerFont').tooltip();
+    }
+
+    var texteditoronsuccesspredicate, texteditoroncancelpredicate;
+
+    function showTextEditor(verseBeginning, onsuccess, oncancel) {
+        
+        texteditoronsuccesspredicate = onsuccess;
+        texteditoroncancelpredicate = oncancel;
+       
+        //show text editor with scale effect
+        $('#textEditorOverlay').delay(300).show("scale", { percent: 100, origin: ["middle", "center"] }, 500);
+
+        $('#fullScreenBtn').show();
+        $('#switchToEditorBtn').hide();
+        $('#switchToTypewriterBtn').show();
+
+
+        //get first 2 lines of text and add to preview 
+        $('#textEditorVerseBeginning').html(verseBeginning);
+
+        //add this script to add new line on enter
+        $.valHooks.textarea = {
+            get: function (elem) {
+                return elem.value.replace(/\r?\n/g, "<br>");
+            }
+        };
+
+
+        //expand or exit full screen
+        var fullscreen = false;
+        $('#fullScreenBtn').click(function () {
+            if (fullscreen == false) {              
+                $('#textEditor').animate({ width: "100%" }, 'slow');
+                fullscreen = true;
+            }
+            else {             
+                $('#textEditor').animate({ width: "70%" }, 'slow');
+                fullscreen = false;
+            }
+        })
+
+
+
+      /*  $('#okBtn').click(function () {
+                texteditorokbuttonpressed();
+                $('#editorOverlay').css('display', 'none');
+
+        })*/
+
+
+        //on ok button press, close typewriter 
+        $('#okBtn').click(function () {
+
+            if ($('#editableBox').text() != '') {                
+                texteditorokbuttonpressed();
+                $('#editorOverlay').css('display', 'none');
+            }
+            else {//if nothing was entered show error                  
+                $('#enterVerseError2').modal({
+                    backdrop: false
+                });
+            }
+        })
+
+
+
+    }
+
+
+
+    function hideTextEditor() {
+        
+        $('#textEditorOverlay').stop();
+        $('#textEditorOverlay').hide("scale", { percent: 0, origin: ["middle", "center"] }, 500);
+
+
+        if (texteditoroncancelpredicate != null) {
+            texteditoroncancelpredicate();
+        }
+
+    }
+
+    function texteditorokbuttonpressed() {
+
+        if (texteditoronsuccesspredicate != null) {
+
+                texteditoronsuccesspredicate($('#editableBox').html());
+
+        }
+
+    }
+    
+</script>

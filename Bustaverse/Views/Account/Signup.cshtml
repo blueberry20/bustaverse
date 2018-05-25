@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Signup";
+}
+<!--**************************Sign Up Page***************************-->
+<div class="fullScreenContainer" id="signupPage">
+   
+        <div class="formHolder">
+              <form class="form-signin" role="form">
+                    <h2 class="form-signin-heading">Create an account</h2>
+                    <input type="text" class="form-control" placeholder="Display name" required autofocus>
+                    <input type="text" class="form-control" placeholder="Email address" required>
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <p>By signing up, I agree to bust'a'verse terms of service.</p>
+                    <button class="btn btn-lg btn-blue btn-block" type="submit">Sign up</button>     
+              </form>
+              <hr />
+              <p>Or skip this step</p>
+              <a id="facebookSignin" href="#"><i class="icon-facebook"></i>Log In Using Facebook</a>
+        </div>
+
+</div>
+
+
+<script>
+    function document_ready() {
+        /* ----------------------use backstretch to center image------------- */
+        $('#signupPage').backstretch("../../Content/images/girltyping2_sm.jpg");
+        $('footer').css('position', 'absolute').css('bottom', '0').css('left', '0');
+    }
+</script>

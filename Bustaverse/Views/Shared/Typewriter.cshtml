@@ -1,0 +1,246 @@
+﻿
+
+<!--*********************************Typewriter**************************-->
+<div id="typewriterOverlay">
+    <div id="typewriterEditor">
+        <!--*********Carriage*******************-->
+        <div id="carriageHolder">
+            <img id="carriageImg" class="img-responsive" src='@Url.Content("~/Content/images/carriage.png")' alt="" />
+            <div id="paperHolder">
+                <img id="paper" class="img-responsive" src='@Url.Content("~/Content/images/paper_sm.jpg")' alt="" />
+                <div id="insidePaperDiv">
+                    <span id="beginningoftheverse">My Verse</span><br />
+                    <span id="endingoftheverse">
+                        <span id="line0"></span><br />
+                        <span id="line1"></span><br />
+                        <span id="line2"></span><br />
+                        <span id="line3"></span><br />
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!--*********Typewriter bottom*******************-->
+        <div id="typewriterHolder">
+            <img id="typewriterImg" src='@Url.Content("~/Content/images/typewriter.png")' alt="" />
+        </div>
+
+        <!--**********Enter text input field******************-->
+        <div id="typingTextDiv">
+            <input id="typingInput" type="text" placeholder="Enter text here" required autofocus>
+            <img id="enterBtn" src='@Url.Content("~/Content/images/enterBtnSq.png")' alt="" />
+        </div>
+
+        <!--submit icon-->
+        <div id="finishedBtnTypewriter" class="roundBtn">
+            Done
+        </div>
+
+         <!--  <button id="okBtnTypewriter" class="btn btn-lg">Let's submit!</button> -->
+
+        <!--If nothing was entered display this modal with error-->
+        <div id="enterVerseError1" class="modal enterVerseError" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Please enter verse ending!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    var initialPosition;
+    var typeWriterInitialized = false;
+
+    var typewriteronsuccesspredicate, typewriteroncancelpredicate;
+
+    function showTypewriter(verseBeginning, onsuccess, oncancel) {
+        
+        typewriteronsuccesspredicate = onsuccess;
+        typewriteroncancelpredicate = oncancel;
+
+        //show typewriter with slide effect
+        $('#typewriterOverlay').delay(300).show("slide", { direction: "down" }, 500, function () { ding.play() });
+
+        $('#fullScreenBtn').hide();
+        $('#switchToTypewriterBtn').hide();
+        $('#switchToEditorBtn').show();
+
+        //add text with verse beginning from FinishVerse page   
+        $('#beginningoftheverse').html(verseBeginning);
+
+
+        getInitialPosition();
+
+        //change initial position of the carriage on resize
+        $(window).resize(function () {    
+                getInitialPosition();
+        });
+
+        function getInitialPosition(){
+            //get current left position of the div that holds the carriage
+            setTimeout(function () {
+                initialPosition = $('#carriageHolder').offset().left;
+            }, 1000);
+        }
+
+        if (!typeWriterInitialized) {
+            $('#typingTextDiv').keydown(function (e) {
+
+                if (e.keyCode == 8) { //backspace
+                    spacesound.play();
+                }
+                else if (e.keyCode == 13) { //enter
+                    if (!playCarriageReturn()) {
+                        var event = e || window.event;
+                        event.preventDefault();
+                        ding.play();
+                    }
+                }
+                else { //other keys
+                    //when reached the end of line prevent typing in input field
+                    if (carriagereturned) {
+                        $('#carriageHolder').stop();
+                        //fullroll.stop();
+                        carriagereturned = false;
+
+                    }
+                    //check width
+                    if ($('#line' + currentline).outerWidth() > $('#insidePaperDiv').innerWidth()) {
+                        var event = e || window.event;
+                        event.preventDefault();
+                        ding.play();
+                    }
+                    else {
+                        keystrokecounter++;
+
+                        if (keystrokecounter % 2 == 0) {
+                            keystroke1.play();
+                        }
+                        else {
+                            keystroke2.play();
+                        }
+
+                    }
+                }
+            });
+
+            //on enter button click check if text was entered in the input field
+            $('#enterBtn').click(function () {
+                if ($('#typingInput').val() != '') {
+                    playCarriageReturn();
+                    $('#typingInput').focus();
+                }
+            })
+
+            //on ok button press, close typewriter 
+            $('#finishedBtnTypewriter').click(function () {
+
+                if ($('#line0').html() != '') {
+                    typewriterokbuttonpressed();
+                    $('#typewriterOverlay').css('display', 'none');
+                    $('#editorOverlay').css('display', 'none');
+                }
+                else {//if nothing was entered show error                 
+                    $('#enterVerseError1').modal({
+                        backdrop: false
+                    });
+                }
+            })
+
+
+            //move carriage over on key press
+            $('#typingTextDiv').keyup(function (e) {
+
+                //  $('#carriageHolder').stop();
+                $('#line' + currentline).html($('#typingInput').val());
+
+                var inputWidth = $('#line' + currentline).width();
+                $('#carriageHolder').css({ 'left': initialPosition - inputWidth });
+
+            });
+
+            typeWriterInitialized = true;
+        }
+      
+
+    }//showTypewriter
+
+    function typewriterokbuttonpressed() {
+
+        //if success delegate is set, then call it (if it is not null)
+        if (typewriteronsuccesspredicate!=null) {
+            typewriteronsuccesspredicate($('#endingoftheverse').html());
+        }
+        
+    }
+    function typewritercancelbuttonpressed() {
+
+        if (typewriteroncancelpredicate!= null) {
+            typewriteroncancelpredicate();
+        }
+
+    }
+
+    //hide typewriter
+    function hideTypewriter() {    
+        $('#typewriterOverlay').hide("slide", { direction: "down" }, 'fast');         
+    }
+
+    //on enter, move paper up and carriage left
+    function playCarriageReturn() {  
+
+        if (lines.length < 3) {
+            fullroll.play();
+
+            currentline++;
+
+            lines.push($('#typingInput').val());
+            $('#typingInput').val('');
+
+            var lineHeight = $('#insidePaperDiv span').css('line-height').replace('px', '');
+            var paperHeight = $('#paperHolder').css('height').replace('px', '');
+
+            //increase paper height on enter
+            $('#paperHolder').css('height', parseInt(paperHeight) + parseInt(lineHeight) + 'px');
+
+            $('#carriageHolder').animate({ 'left': initialPosition }, 1100);
+
+            carriagereturned = true;
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    var carriagereturned = false;
+
+    var currentline = 0;
+    var lines = new Array();
+    var keystrokecounter = 0;
+
+    var keystroke1 = loadAudio('/content/audio/typewriter/keystroke1.wav');
+    var keystroke2 = loadAudio('/content/audio/typewriter/keystroke2.wav');
+    var ding = loadAudio('/content/audio/typewriter/fullding.wav');
+    var spacesound = loadAudio('/content/audio/typewriter/spacesound.wav');
+    var fullroll = loadAudio('/content/audio/typewriter/fullroll.wav');
+
+    function loadAudio(uri) {
+        var audio = new Audio();
+        audio.autoplay = false;
+        audio.src = uri;
+        return audio;
+    }
+
+
+</script>

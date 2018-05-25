@@ -1,0 +1,104 @@
+﻿
+<div id="editorOverlay">
+    @Html.Partial("Typewriter")
+    @Html.Partial("TextEditor")
+
+    <!--close icon-->
+    <div id="doneBtn" class="roundBtn">
+        <i class="fa fa-times"></i>
+    </div>
+
+    <!--text editor icon-->
+    <div id="switchToEditorBtn" class="roundBtn">
+        <img src='@Url.Content("~/Content/images/paperIcon.png")' alt="Paper Icon" />
+    </div>
+
+    <!--typewriter icon-->
+    <div id="switchToTypewriterBtn" class="roundBtn">
+        <img src='@Url.Content("~/Content/images/typewriterIconTransparent.png")' alt="Typewriter Icon" />
+    </div>
+
+    <!--typewriter icon-->
+    <div id="noTypewriterBtn" class="roundBtn">
+        <img src='@Url.Content("~/Content/images/crossedtypewriter.png")' alt="Typewriter Icon" />
+    </div>
+
+    <!--fullscreen icon-->
+    <div id="fullScreenBtn" class="roundBtn">
+        <i class="fa fa-arrows-alt"></i>
+    </div>
+
+</div>
+
+<script>
+    
+    var editorInitialized = false;
+
+    function showEditor(verseBeginning, onsuccess, oncancel) {
+        //link buttons to events, so they dont run multiple times
+        if (!editorInitialized) {         
+            
+            //icon to switch to text editor and set cookie
+            $('#switchToEditorBtn').click(function () {            
+                setCookie('editorMode', 'textEditor', 365);
+                showEditor(verseBeginning, onsuccess, oncancel);
+            })
+
+            //icon to switch to typewriter and set cookie
+            $('#switchToTypewriterBtn').click(function () {            
+                setCookie('editorMode', 'typeWriter', 365);
+                showEditor(verseBeginning, onsuccess, oncancel);
+            })
+
+            editorInitialized = true;
+        }
+
+        //show black background
+        $('#editorOverlay').show();
+        //prevent background scrolling
+        $('body').css('overflow', 'hidden');
+        
+        var editorMode = getCookie('editorMode');
+             
+        //if editor mode is text editor 
+        if (editorMode == "textEditor") {
+
+            showTextEditor(verseBeginning, onsuccess, oncancel);
+
+            hideTypewriter();
+
+        }
+        else { // editor mode is typewriter
+            
+            showTypewriter(verseBeginning, onsuccess, oncancel);
+            hideTextEditor();
+            checkWidth();
+
+        }
+        
+        $(window).resize(function () {
+            checkWidth();
+        });
+
+        function checkWidth() {
+            if ($(window).width() < 992) {
+                showTextEditor(verseBeginning, onsuccess, oncancel);
+                hideTypewriter();
+            }
+        }
+
+        
+        //on close icon click close editor window
+        $('#doneBtn').click(function () {
+            $('#editorOverlay').css('display', 'none');
+            $('#typewriterOverlay').css('display', 'none');
+            $('#textEditorOverlay').css('display', 'none');
+        })
+
+
+    }
+
+
+
+
+</script>
